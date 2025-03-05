@@ -23,6 +23,7 @@ public class BankAccountTest {
     private static final int EXPECTED_GOLD_AMOUNT = 800;
     private static final int EXPECTED_BRONZE_AMOUNT = 950;
     private static final int EXPECTED_BRONZE_AMOUNT_WITH_FEE = 799;
+    private static final int WITHDRAWN_BRONZE_AMOUNT_EXCEDEED = 1001;
 
 
 
@@ -82,11 +83,11 @@ public class BankAccountTest {
         assertEquals(EXPECTED_BRONZE_AMOUNT_WITH_FEE, this.bronzeAccount.getBalance());
     }
 
-   /* @Test
-    public void testCannotWithdrawMoreThanAvailable(){
-        this.account.deposit(1000);
-        assertThrows(IllegalStateException.class, () -> this.account.withdraw(1200));
-    }*/
+    @Test
+    public void testBronzeAccountCannotWithdrawMoreThanAvailable() {
+        this.bronzeAccount.deposit(DEPOSIT_AMOUNT);
+        assertThrows(IllegalStateException.class, () -> this.bronzeAccount.withdraw(WITHDRAWN_BRONZE_AMOUNT_EXCEDEED));
+    }
 
 
 }
