@@ -1,6 +1,6 @@
 package e1;
 
-public abstract class SilverBankAccount extends BankAccountDecorator {
+public class SilverBankAccount extends BankAccountDecorator {
 
     public SilverBankAccount(BankAccount decoratedBankAccount) {
         super(decoratedBankAccount);
