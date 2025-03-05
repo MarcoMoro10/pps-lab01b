@@ -13,9 +13,11 @@ public class BankAccountTest {
     private BankAccount goldAccount;
     private BankAccount bronzeAccount;
     private static final int DEPOSIT_AMOUNT = 1000;
+    private static final int DEPOSIT_GOLD_AMOUNT = 100;
     private static final int EXPECTED_AMOUNT = 1000;
     private static final int WITHDRAWN_AMOUNT = 200;
     private static final int WITHDRAWN_SILVER_AMOUNT = 1200;
+    private static final int WITHDRAWN_GOLD_AMOUNT = 1200;
     private static final int EXPECTED_SILVER_AMOUNT = 799;
     private static final int EXPECTED_GOLD_AMOUNT = 800;
 
@@ -57,6 +59,11 @@ public class BankAccountTest {
         this.goldAccount.deposit(DEPOSIT_AMOUNT);
         this.goldAccount.withdraw(WITHDRAWN_AMOUNT);
         assertEquals(EXPECTED_GOLD_AMOUNT, this.goldAccount.getBalance());
+    }
+    @Test
+    public void testGoldAccountCannotExceedOverdraftLimit() {
+        this.goldAccount.deposit(DEPOSIT_GOLD_AMOUNT);
+        assertThrows(IllegalStateException.class, () -> this.goldAccount.withdraw(WITHDRAWN_GOLD_AMOUNT));
     }
 
 
