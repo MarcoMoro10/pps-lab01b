@@ -22,6 +22,7 @@ public class BankAccountTest {
     private static final int EXPECTED_SILVER_AMOUNT = 799;
     private static final int EXPECTED_GOLD_AMOUNT = 800;
     private static final int EXPECTED_BRONZE_AMOUNT = 950;
+    private static final int EXPECTED_BRONZE_AMOUNT_WITH_FEE = 799;
 
 
 
@@ -73,6 +74,12 @@ public class BankAccountTest {
         this.bronzeAccount.deposit(DEPOSIT_AMOUNT);
         this.bronzeAccount.withdraw(WITHDRAWN_BRONZE_AMOUNT);
         assertEquals(EXPECTED_BRONZE_AMOUNT, this.bronzeAccount.getBalance());
+    }
+    @Test
+    public void testBronzeAccountWithdrawWithFee() {
+        this.bronzeAccount.deposit(DEPOSIT_AMOUNT);
+        this.bronzeAccount.withdraw(WITHDRAWN_AMOUNT);
+        assertEquals(EXPECTED_BRONZE_AMOUNT_WITH_FEE, this.bronzeAccount.getBalance());
     }
 
    /* @Test
