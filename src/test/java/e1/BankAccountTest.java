@@ -25,10 +25,6 @@ public class BankAccountTest {
     private static final int EXPECTED_BRONZE_AMOUNT_WITH_FEE = 799;
     private static final int WITHDRAWN_BRONZE_AMOUNT_EXCEDEED = 1001;
 
-
-
-
-
     @BeforeEach
     void init(){
         this.coreAccount = new CoreBankAccount();
@@ -41,13 +37,11 @@ public class BankAccountTest {
     public void testInitiallyEmpty() {
         assertEquals(0, this.coreAccount.getBalance());
     }
-
     @Test
     public void testCanDeposit() {
         this.coreAccount.deposit(DEPOSIT_AMOUNT);
         assertEquals(EXPECTED_AMOUNT, this.coreAccount.getBalance());
     }
-
    @Test
     public void testSilverAccountWithdraw() {
         this.silverAccount.deposit(DEPOSIT_AMOUNT);
@@ -82,12 +76,10 @@ public class BankAccountTest {
         this.bronzeAccount.withdraw(WITHDRAWN_AMOUNT);
         assertEquals(EXPECTED_BRONZE_AMOUNT_WITH_FEE, this.bronzeAccount.getBalance());
     }
-
     @Test
     public void testBronzeAccountCannotWithdrawMoreThanAvailable() {
         this.bronzeAccount.deposit(DEPOSIT_AMOUNT);
         assertThrows(IllegalStateException.class, () -> this.bronzeAccount.withdraw(WITHDRAWN_BRONZE_AMOUNT_EXCEDEED));
     }
-
 
 }
