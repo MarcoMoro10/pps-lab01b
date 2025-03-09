@@ -45,5 +45,25 @@ public class LogicTest {
       assertTrue(logics.hasKnight(newRow, newCol), "The Knight should be on the correct position");
     }
   }
+  @Test
+  void testKnightInvalidMove(){
+    int knightRow = -1, knightCol = -1;
+    for (int row = 0; row < SIZE; row++) {
+      for (int col = 0; col < SIZE; col++) {
+        if (logics.hasKnight(row, col)) {
+          knightRow = row;
+          knightCol = col;
+          break;
+        }
+      }
+      if (knightRow != -1) break;
+    }
+    int invalidRow = knightRow + 1;
+    int invalidCol = knightCol + 1;
+    if (invalidRow < SIZE && invalidCol < SIZE) {
+      assertFalse(logics.hit(invalidRow, invalidCol), "The Knight should move without hit the pawn");
+      assertFalse(logics.hasKnight(invalidRow, invalidCol), "The Knight should not be on the correct position");
+    }
+  }
 
 }
