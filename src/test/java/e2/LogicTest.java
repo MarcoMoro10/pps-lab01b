@@ -1,15 +1,28 @@
 package e2;
 import org.junit.jupiter.api.*;
 
-public class LogicTest {
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-  @Test
-  public void test() {
-    assert(true);
-    // TODO: Add your test logic here
-    // You can generate random inputs and assert the expected output
-    // For example:
-    // int result = Logic.someMethod(5, 10);
-    // assertEquals(expectedResult, result);
+public class LogicTest {
+  private Logics logics;
+  private final int SIZE = 8;
+
+  @BeforeEach
+  void setUp() {
+    logics = new LogicsImpl(SIZE);
   }
+  @Test
+  void testInitialPositions(){
+    boolean validKnight = false;
+    boolean validPawn = false;
+    for (int row = 0; row < SIZE; row++) {
+      for (int col = 0; col < SIZE; col++) {
+        if (logics.hasKnight(row, col)) validKnight = true;
+        if (logics.hasPawn(row, col)) validPawn = true;
+      }
+    }
+    assertTrue(validKnight, "The horse must be on the correct position");
+    assertTrue(validPawn, "The pawn must be on the correct position");
+  }
+
 }
