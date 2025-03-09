@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LogicTest {
   private Logics logics;
-  private final int SIZE = 8;
+  private final int SIZE = 5;
 
   @BeforeEach
   void setUp() {
@@ -65,5 +65,4 @@ public class LogicTest {
       assertFalse(logics.hasKnight(invalidRow, invalidCol), "The Knight should not be on the correct position");
     }
   }
-
 }
